@@ -1,0 +1,835 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Task Explorer API",
+    "version": "v1"
+  },
+  "paths": {
+    "/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/Authenticate": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticateResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Auth": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Project/create": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Project/list": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProjectsResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProjectsResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProjectsResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Task/create": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTaskReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Task/list/by-author": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByAuthorReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByAuthorReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByAuthorReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByAuthorResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByAuthorResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByAuthorResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Task/delete": {
+      "delete": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTaskReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTaskReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteTaskReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Task/update": {
+      "put": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTaskReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Task/available-statuses": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAvailableStatusesReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAvailableStatusesReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ListAvailableStatusesReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAvailableStatusesResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAvailableStatusesResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAvailableStatusesResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Task/statuses": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListStatusesResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListStatusesResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListStatusesResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Task/by-project": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByProjectReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByProjectReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTasksByProjectReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByProjectResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByProjectResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTasksByProjectResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Task/by-number": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTaskByNumberReq"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTaskByNumberReq"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetTaskByNumberReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTaskByNumberResp"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTaskByNumberResp"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTaskByNumberResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticateReq": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticateResp": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateProjectReq": {
+        "type": "object",
+        "properties": {
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTaskReq": {
+        "type": "object",
+        "properties": {
+          "taskModel": {
+            "$ref": "#/components/schemas/TaskModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteTaskReq": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "$ref": "#/components/schemas/TaskNumber"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTaskByNumberReq": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "$ref": "#/components/schemas/TaskNumber"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTaskByNumberResp": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "$ref": "#/components/schemas/TaskModelWithNumber"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTasksByAuthorReq": {
+        "type": "object",
+        "properties": {
+          "login": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTasksByAuthorResp": {
+        "type": "object",
+        "properties": {
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskModelWithNumber"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTasksByProjectReq": {
+        "type": "object",
+        "properties": {
+          "projectTitle": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTasksByProjectResp": {
+        "type": "object",
+        "properties": {
+          "tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskModelWithNumber"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListAvailableStatusesReq": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/TaskStatusModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListAvailableStatusesResp": {
+        "type": "object",
+        "properties": {
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskStatusModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListProjectsResp": {
+        "type": "object",
+        "properties": {
+          "projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListStatusesResp": {
+        "type": "object",
+        "properties": {
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskStatusModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterReq": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/UserDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskModel": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sprintId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "creatorLogin": {
+            "type": "string",
+            "nullable": true
+          },
+          "assignedToLogin": {
+            "type": "string",
+            "nullable": true
+          },
+          "reporterLogin": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TaskStatusModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskModelWithNumber": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "$ref": "#/components/schemas/TaskNumber"
+          },
+          "taskModel": {
+            "$ref": "#/components/schemas/TaskModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskNumber": {
+        "type": "object",
+        "properties": {
+          "prefix": {
+            "type": "string",
+            "nullable": true
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskStatusModel": {
+        "enum": [
+          "ToDo",
+          "InProgress",
+          "InReview",
+          "Testing",
+          "DevelopmentDone",
+          "ReadyToDeploy",
+          "Closed"
+        ],
+        "type": "string"
+      },
+      "UpdateTaskReq": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "$ref": "#/components/schemas/TaskNumber"
+          },
+          "task": {
+            "$ref": "#/components/schemas/TaskModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
